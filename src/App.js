@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Table from './Table';
+import Form from './Form';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    const petsInformation = [
+        {
+            name: 'Puppy',
+            owner: 'Mariana'
+        },
+        {
+            name: 'Kiara',
+            owner: 'Damaris'
+        },
+        {
+            name: 'Lucy',
+            owner: 'Marco'
+        },
+        {
+            name: 'Jako',
+            owner: 'Jean'
+        }
+    ];
+
+    const [petsData, setPetsData] = useState(petsInformation);
+
+    function removePet(index) {
+        const newPetsData = petsData.filter((pet, i) => {
+            return i !== index;
+        });
+        setPetsData(newPetsData);
+    }
+
+    function handleSubmit(pet) {
+        setPetsData([...petsData, pet]);
+    }
+
+    return (
+      <div className="container">
+        <Table petsData={petsData} removePet={removePet} />
+        <Form handleSubmit={handleSubmit} />
+      </div>
+    );
 }
-
-export default App;
