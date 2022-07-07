@@ -39,7 +39,7 @@ export default function Form(props) {
             value={newPet.owner}
             onChange={handleChange}
           />
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Agregar" />
         </form>
       );
 }
