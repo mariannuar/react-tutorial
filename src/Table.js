@@ -21,7 +21,7 @@ const TableBody = (props) => {
             <td>{pet.name}</td>
             <td>{pet.owner}</td>
             <td>
-                <button onClick={() => removePet(pet.id)}>Eliminar</button>
+                <button onClick={() => removePet(index)}>Eliminar</button>
             </td>
           </tr>
         );
